@@ -1,0 +1,19 @@
+<!-- 인트로: body 맨 앞 -->
+<div id="kf-intro" role="dialog" aria-label="KEYFORGE 인트로">
+  <div class="kf-intro-bg"></div>
+  <div class="kf-word" aria-hidden="true"><b class="kc" style="--k:0"><i>K</i></b><b class="kc" style="--k:1"><i>E</i></b><b class="kc" style="--k:2"><i>Y</i></b><b class="kc acc" style="--k:3"><i>F</i></b><b class="kc" style="--k:4"><i>O</i></b><b class="kc" style="--k:5"><i>R</i></b><b class="kc" style="--k:6"><i>G</i></b><b class="kc" style="--k:7"><i>E</i></b></div>
+  <div class="kf-intro-bar"><i></i></div>
+  <p class="kf-intro-hint mono"><b>아무 키나 눌러보세요</b> · Press any key</p>
+  <button class="kf-skip" type="button">Skip</button>
+</div>
+
+<!-- 히어로: 섹션 첫 부분 (텍스트 .wrap 은 pointer-events:none, 안의 a/button 만 auto) -->
+<section class="hero"><div class="kf-field" aria-hidden="true"></div>
+    <div class="kf-tools"><span class="kf-chip hide-m">⌨ 키를 눌러보세요 <span class="kf-typed"></span></span><button class="kf-chip kf-sound" type="button"></button></div>
+    <div class="wrap">
+      <div class="ticker"><span class="dot"></span><span class="mono">FORGE 75 · 2차 생산분 판매 중 — 한정 300대</span></div>
+      <h1>한 타의 무게를 <span>설계합니다</span></h1>
+      <div class="sub"><p>6063 알루미늄을 깎아 만든 하우징, 공장 윤활 스위치, 두 겹의 흡음 폼. 손끝에 닿는 모든 층을 직접 고르고 조립합니다.</p>
+        <div class="cta"><a class="btn pri" href="#/p/f75">FORGE 75 구성하기</a><a class="btn alt" href="#/shop">전체 제품</a></div></div>
+    </div></section>
+<!-- 연결: 히어로가 그려진 뒤 KF.mountHero(), 페이지 로드 시 KF.intro(onOpen) 한 번 -->

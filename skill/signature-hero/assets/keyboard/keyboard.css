@@ -1,0 +1,71 @@
+/* keyboard.css — signature-hero 레퍼런스 #1 (KEYFORGE, 2026-09-17)
+ * 사이트 변수 의존: --acc(포인트) --mono --t1~t3 --line-2 --ease --g  → 없으면 사이트에 맞게 치환
+ * 폭 변수는 --kw (사이트 --w 같은 흔한 이름과 충돌 방지) */
+/* ── 직접 눌러보는 키보드: 인트로(KEYFORGE 키캡 8개) + 히어로(기울어진 75% 키보드) ── */
+.kc{--h:calc(var(--u)*.16);position:relative;display:block;flex:none;border:0;padding:0;background:none;color:inherit;
+  width:calc(var(--u)*var(--kw,1) + var(--gap)*(var(--kw,1) - 1));height:var(--u);border-radius:calc(var(--u)*.16)}
+.kc i{position:absolute;inset:0;border-radius:inherit;display:grid;place-items:center;font:500 calc(var(--u)*.24)/1 var(--mono);font-style:normal;
+  color:rgba(247,248,248,.5);background:linear-gradient(180deg,#373a40,#27292e 70%);
+  box-shadow:0 var(--h) 0 #16171a,0 calc(var(--h) + 2px) 0 #0a0b0d,0 calc(var(--h) + 12px) 18px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);
+  transform:translateY(calc(var(--h) * -1));
+  transition:transform 90ms cubic-bezier(0,0,.2,1),box-shadow 90ms cubic-bezier(0,0,.2,1),color .35s ease-out,background .35s ease-out}
+.kc.acc i{color:rgba(30,10,0,.72);background:linear-gradient(180deg,#ff8646,#ea5a12 70%);
+  box-shadow:0 var(--h) 0 #9a3907,0 calc(var(--h) + 2px) 0 #5e2304,0 calc(var(--h) + 12px) 18px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.25)}
+.kc::after{content:"";position:absolute;inset:-35%;border-radius:50%;z-index:-1;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(255,106,26,.6),rgba(255,106,26,0));transition:opacity .6s ease-out}
+.kc.wave i{transform:translateY(calc(var(--h) * -.5))}
+.kc.wave::after{opacity:.45;transition-duration:80ms}
+.kc.down i{transform:translateY(calc(var(--h) * -.12));
+  box-shadow:0 calc(var(--h) * .12) 0 #16171a,0 calc(var(--h) * .12 + 1px) 0 #0a0b0d,0 3px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05)}
+.kc.acc.down i{box-shadow:0 calc(var(--h) * .12) 0 #9a3907,0 3px 8px rgba(0,0,0,.5)}
+.kc.lit i{color:#ff9258;background:linear-gradient(180deg,#3d3430,#2b2521 70%)}
+.kc.acc.lit i{color:#1a0800;background:linear-gradient(180deg,#ffa066,#ff6a1a 70%)}
+.kc.lit::after{opacity:1;transition-duration:60ms}
+
+/* 히어로 필드 */
+.kf-field{position:absolute;inset:0;overflow:hidden;perspective:1700px;touch-action:pan-y;
+  --u:clamp(44px,4.8vw,74px);--gap:calc(var(--u)*.14);--gx:70%;--gy:40%;
+  background:radial-gradient(34% 48% at var(--gx) var(--gy),rgba(255,106,26,.3),transparent 70%),radial-gradient(50% 60% at 82% 8%,rgba(255,196,150,.1),transparent 70%),radial-gradient(90% 90% at 75% 25%,#1a1b20,#0b0c0e 70%)}
+.kf-board{position:absolute;left:40%;top:16%;display:flex;flex-direction:column;gap:var(--gap);padding:calc(var(--u)*.34);
+  border-radius:calc(var(--u)*.32);background:linear-gradient(180deg,#1d1e22,#101114);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.04),0 calc(var(--u)*.3) 0 #07080a,0 60px 120px rgba(0,0,0,.7);
+  transform-origin:30% 40%;transform:rotateX(48deg) rotateZ(-17deg);opacity:0;transition:opacity 1.2s ease-out .2s,transform 1.6s cubic-bezier(.16,1,.3,1)}
+.kf-row{display:flex;gap:var(--gap)}
+html.kf-open .kf-board,.kf-board.show{opacity:1}
+.hero::after{pointer-events:none;background:linear-gradient(0deg,#0b0c0e 4%,rgba(11,12,14,.6) 34%,rgba(11,12,14,0) 62%),linear-gradient(90deg,rgba(11,12,14,.92) 18%,rgba(11,12,14,.45) 46%,transparent 66%)}
+.hero .wrap{pointer-events:none}
+.hero .wrap :is(a,button){pointer-events:auto}
+.kf-tools{position:absolute;top:18px;right:var(--g);z-index:2;display:flex;gap:6px;align-items:center}
+.kf-chip{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);
+  background:rgba(11,12,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 11px var(--mono);letter-spacing:.04em;color:var(--t2)}
+button.kf-chip{cursor:pointer;transition:border-color 160ms var(--ease),color 160ms var(--ease)}
+button.kf-chip:hover{border-color:var(--t3);color:var(--t1)}
+.kf-typed{color:var(--acc);min-width:6ch}
+@media (max-width:760px){
+  .kf-field{--u:clamp(32px,10.4vw,50px)}
+  .kf-board{left:-12%;top:9%;transform:rotateX(52deg) rotateZ(-14deg)}
+  .hero::after{background:linear-gradient(0deg,#0b0c0e 30%,rgba(11,12,14,.75) 52%,rgba(11,12,14,0) 78%)}
+  .kf-tools .hide-m{display:none}
+}
+
+/* 인트로 */
+#kf-intro{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+  background:#08090b;--p:0;transition:opacity .8s cubic-bezier(.16,1,.3,1),visibility 0s .8s;animation:kf-failsafe .5s ease-out 10s forwards}
+#kf-intro.done{opacity:0;visibility:hidden}
+@keyframes kf-failsafe{to{opacity:0;visibility:hidden}}
+.kf-intro-bg{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,rgba(255,106,26,calc(.04 + var(--p) * .3)),rgba(255,106,26,0) calc(18% + var(--p) * 34%)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect x='6' y='6' width='60' height='60' rx='10' fill='none' stroke='%23fff' stroke-opacity='.05'/%3E%3C/svg%3E") center/72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse at center,#000 25%,transparent 78%);
+  transition:background .3s ease-out}
+.kf-word{position:relative;--u:clamp(30px,9.2vw,86px);--gap:calc(var(--u)*.16);display:flex;gap:var(--gap);perspective:900px}
+.kf-word .kc{transform:rotateX(20deg);transition:transform .75s cubic-bezier(.7,0,.2,1) calc(var(--k) * 45ms),opacity .45s ease-out calc(var(--k) * 45ms + .25s)}
+.kf-word .kc i{font-size:calc(var(--u)*.36)}
+.kf-word.launch .kc{transform:translateY(-140%) rotateX(20deg) scale(.86);opacity:0}
+.kf-intro-bar{position:relative;width:min(260px,62vw);height:2px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
+.kf-intro-bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(var(--p));background:var(--acc);transition:transform .2s ease-out}
+.kf-intro-hint{position:relative;color:var(--t3);text-align:center}
+.kf-intro-hint b{color:var(--t1);font-weight:500}
+.kf-skip{position:absolute;top:18px;right:18px;height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);color:var(--t2);font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background:none}
+.kf-skip:hover{color:var(--t1);border-color:var(--t3)}
+@media (prefers-reduced-motion:reduce){#kf-intro{display:none}.kf-board{opacity:1;transition:none}.kc i{transition:none}}
